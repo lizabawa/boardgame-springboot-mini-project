@@ -7,6 +7,11 @@ public class Category {
     public Category() {
     }
 
+    /**
+     * This class is used to get and set any information pertaining to a category.
+     * @param id This is the category id.
+     * @param name This is the category name.
+     */
     public Category(Long id, String name) {
         this.id = id;
         this.name = name;
