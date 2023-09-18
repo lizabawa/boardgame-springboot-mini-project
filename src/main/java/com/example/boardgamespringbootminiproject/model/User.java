@@ -3,17 +3,17 @@ package com.example.boardgamespringbootminiproject.model;
 public class User {
     private Long id;
     private String userName;
-    private String name;
     private String emailAddress;
+    private String password;
 
     public User() {
     }
 
-    public User(Long id, String userName, String name, String emailAddress) {
+    public User(Long id, String userName, String emailAddress, String password) {
         this.id = id;
         this.userName = userName;
-        this.name = name;
         this.emailAddress = emailAddress;
+        this.password = password;
     }
 
     public Long getId() {
@@ -32,14 +32,6 @@ public class User {
         this.userName = userName;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -48,13 +40,21 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
-                ", name='" + name + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
