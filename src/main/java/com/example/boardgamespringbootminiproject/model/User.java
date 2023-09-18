@@ -10,7 +10,7 @@ public class User {
     }
 
     /**
-     * This class is used set and get any information about the user.
+     * This class is used set and get any information pertaining to a user.
      * @param id This is the User id
      * @param userName This is the User name
      * @param emailAddress This is the User email address

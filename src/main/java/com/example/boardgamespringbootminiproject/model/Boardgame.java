@@ -9,6 +9,13 @@ public class Boardgame {
     public Boardgame() {
     }
 
+    /**
+     * This class is used to set and get any information pertaining to a boardgame.
+     * @param id This is the boardgame id.
+     * @param name This is the boardgame name.
+     * @param players This is the number of players the boardgame can have.
+     * @param ageRange This is the age range that the boardgame is meant for.
+     */
     public Boardgame(Long id, String name, Integer players, Integer ageRange) {
         this.id = id;
         this.name = name;
