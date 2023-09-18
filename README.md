@@ -4,6 +4,8 @@
 - This is a Springboot application that allows a user to login and add their boardgames to a list
 
 ## Tools and Technologies Used
+- Spring Boot DevTools
+- Spring Web
 
 ## Approach
 - I started by creating my user stories and a ERD diagram so that I could brainstorm the direction I wanted my project to take, as well as the relationships between the tables.
