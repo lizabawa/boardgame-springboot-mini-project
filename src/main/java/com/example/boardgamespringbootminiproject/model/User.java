@@ -9,6 +9,13 @@ public class User {
     public User() {
     }
 
+    /**
+     * This class is used set and get any information about the user.
+     * @param id This is the User id
+     * @param userName This is the User name
+     * @param emailAddress This is the User email address
+     * @param password This is the User password
+     */
     public User(Long id, String userName, String emailAddress, String password) {
         this.id = id;
         this.userName = userName;
