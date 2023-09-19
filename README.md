@@ -27,6 +27,9 @@
 - As a user, I want to login using accurate credentials, so that my account can only be accessed with the accurate credentials.
 
 ## ERD Diagram
+- I found it easier to create my ERD diagram by hand on a whiteboard than using an online tool. The photo below was not the final version of my ERD diagram but it gave me a good idea of how to organize my code.
+![ERD Diagram](src/image/ERD Diagram.jpeg)
+
 
 ## Planning
 - In terms of planning, I utilized an ERD diagram and a [spreadsheet](https://docs.google.com/spreadsheets/d/1aeuLdyFBMQ7PxdJf1v-rc167PWryu8HmBvivUike19s/edit#gid=0)
