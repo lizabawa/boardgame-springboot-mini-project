@@ -23,6 +23,10 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL) //if user exists, fetch all data assoc w user
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private UserProfile userProfile;
+
     public User() {
     }
 
@@ -72,13 +76,20 @@ public class User {
         this.password = password;
     }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

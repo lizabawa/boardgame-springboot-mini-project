@@ -1,5 +1,7 @@
 package com.example.boardgamespringbootminiproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,10 @@ public class UserProfile {
 
     @Column
     private String profileDescription;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "userProfile")
+    private User user;
 
     public UserProfile() {
     }
@@ -62,6 +68,14 @@ public class UserProfile {
         this.profileDescription = profileDescription;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "UserProfile{" +
@@ -69,6 +83,7 @@ public class UserProfile {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", profileDescription='" + profileDescription + '\'' +
+                ", user=" + user +
                 '}';
     }
 }
