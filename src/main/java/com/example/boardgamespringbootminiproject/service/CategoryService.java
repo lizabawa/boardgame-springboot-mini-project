@@ -59,6 +59,15 @@ public class CategoryService {
 
     //GET ONE CATEGORY
     public Optional<Category> getCategory(Long categoryId){
-        Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+
+        if (categoryOptional.isEmpty()){
+            throw new InformationNotFoundException("Category with an id " + categoryId + " not found.");
+        } else {
+            return categoryOptional;
+        }
+
+        //if the category does NOT exist, throw an error otherwise return the category
+
     }
 }
