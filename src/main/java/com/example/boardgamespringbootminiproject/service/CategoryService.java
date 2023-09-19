@@ -71,19 +71,16 @@ public class CategoryService {
 
     //UPDATE A CATEGORY
     public Optional<Category> updateCategory(Long categoryId, Category categoryObject){
-        //if category does nto exist OR is equal to the current info then throw an error otherwise save the updated info to categoryrepository
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
 
         if (categoryOptional.isEmpty()){
             throw new InformationNotFoundException("Category with id of " + categoryId + " not found.");
-        } else if (categoryOptional.equals()) {
+        } else if (categoryOptional.equals(categoryObject)) {
             throw new InformationAlreadyExistsException("Category with id of " + categoryId + " is already up to date");
         } else {
             Category updateCategory = categoryRepository.findById(categoryId).get();
             updateCategory.setName(categoryObject.getName());
             return Optional.of(categoryRepository.save(updateCategory));
         }
-
-
     }
 }

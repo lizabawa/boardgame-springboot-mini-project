@@ -39,4 +39,10 @@ public class CategoryController {
     public Optional<Category> getCategory(@PathVariable(value = "categoryId") Long categoryId){
         return categoryService.getCategory(categoryId);
     }
+
+    //UPDATE A CATEGORY
+    @PutMapping(path = "/categories/{categoryId}/") //http://localhost:9094/api/categories/1/
+    public Optional<Category> updateCategory(@PathVariable(value = "categoryId") Long categoryId, @RequestBody Category categoryObject){
+        return categoryService.updateCategory(categoryId, categoryObject);
+    }
 }
