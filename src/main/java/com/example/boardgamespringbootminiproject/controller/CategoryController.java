@@ -15,15 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api") //http://localhost:9094/api
 public class CategoryController {
     private CategoryService categoryService;
-    private BoardgameRepository boardgameRepository;
 
     @Autowired
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
-    @Autowired
-    public void setBoardgameRepository(BoardgameRepository boardgameRepository) {
-        this.boardgameRepository = boardgameRepository;
-    }
+
+
 }
