@@ -1,5 +1,6 @@
 package com.example.boardgamespringbootminiproject.controller;
 
+import com.example.boardgamespringbootminiproject.repository.BoardgameRepository;
 import com.example.boardgamespringbootminiproject.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api") //http://localhost:9094/api
 public class CategoryController {
     private CategoryService categoryService;
+    private BoardgameRepository boardgameRepository;
 
     @Autowired
     public void setCategoryService(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
-    @GetMapping(path = "/hello/") //http://localhost:9094/api/hello/
-    public String getHelloWorld(){
-        return categoryService.getHelloWorld();
+    @Autowired
+    public void setBoardgameRepository(BoardgameRepository boardgameRepository) {
+        this.boardgameRepository = boardgameRepository;
     }
 }

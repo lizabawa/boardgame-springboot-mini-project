@@ -24,13 +24,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    //Register
+    //REGISTER USER
     @PostMapping(path = "/register/") //http://localhost:9094/auth/users/register/
     public User createUser(@RequestBody User userObject){
         return userService.createUser(userObject);
     }
 
-    //Login
+    //LOGIN USER
     @PostMapping(path = "/login/") //http://localhost:9094/auth/users/login/
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
         Optional<String> jwtToken = userService.loginUser(loginRequest); //authentication happens here, calling method from the UserService class
