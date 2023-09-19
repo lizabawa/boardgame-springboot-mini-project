@@ -1,8 +1,8 @@
 package com.example.boardgamespringbootminiproject.security;
 
+import com.example.boardgamespringbootminiproject.model.User;
 import com.example.boardgamespringbootminiproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String emailAddress) throws UsernameNotFoundException {
-        User user = userService.findUserByEmail
-        return null;
+        User user = userService.findUserByEmailAddress(emailAddress);
+        return new MyUserDetails(user);
     }
 }
