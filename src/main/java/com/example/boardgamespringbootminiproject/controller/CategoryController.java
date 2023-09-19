@@ -1,9 +1,7 @@
 package com.example.boardgamespringbootminiproject.controller;
 
-import com.example.boardgamespringbootminiproject.repository.BoardgameRepository;
 import com.example.boardgamespringbootminiproject.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
