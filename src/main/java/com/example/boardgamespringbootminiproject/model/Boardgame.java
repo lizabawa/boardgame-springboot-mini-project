@@ -1,9 +1,23 @@
 package com.example.boardgamespringbootminiproject.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "boardgames")
 public class Boardgame {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private Integer players;
+
+    @Column
     private Integer ageRange;
 
     public Boardgame() {

@@ -1,9 +1,26 @@
 package com.example.boardgamespringbootminiproject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+
+@Entity
+@Table
 public class User {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String userName;
+
+    @Column(unique = true) //emailAddresses are unique
     private String emailAddress;
+
+    @Column
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     public User() {
