@@ -49,7 +49,7 @@ public class Category {
         this.id = id;
     }
 
-    public Category getName() {
+    public String getName() {
         return name;
     }
 
