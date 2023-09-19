@@ -88,6 +88,11 @@ public class CategoryService {
     //DELETE CATEGORY
     public void deleteCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-        categoryRepository.deleteCategoryById(categoryOptional.get().getId());
+
+        if (categoryOptional.isPresent()){
+            categoryRepository.deleteCategoryById(categoryId);
+        }else {
+            throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
+        }
     }
 }
