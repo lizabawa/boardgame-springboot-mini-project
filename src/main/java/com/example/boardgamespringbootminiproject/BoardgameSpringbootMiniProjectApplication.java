@@ -13,6 +13,5 @@ public class BoardgameSpringbootMiniProjectApplication {
 }
 
 
-//TODO Add seed data
 //TODO Create CRUD methods
 //TODO add docstrings
