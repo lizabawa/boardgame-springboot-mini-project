@@ -56,4 +56,9 @@ public class CategoryService {
             return categoryList;
         }
     }
+
+    //GET ONE CATEGORY
+    public Optional<Category> getCategory(Long categoryId){
+        Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
+    }
 }
