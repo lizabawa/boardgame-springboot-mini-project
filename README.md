@@ -9,7 +9,8 @@
 - https://git.generalassemb.ly/sureshmelvinsigera/Java-Spring-Boot-lecture/blob/spring-2-7-8/README.md#day-01
 
 ## Approach
-- I started by creating my user stories and a ERD diagram so that I could brainstorm the direction I wanted my project to take, as well as the relationships between the tables.
+- I started by creating my user stories and a ERD diagram so that I could brainstorm the direction I wanted my project to take, as well as visualize the relationships between the tables.
+- I began my code by adding my model classes and then Spring security along with the appropriate JSON web token dependencies and added methods and classes as needed from there to get my security working correctly. Lastly, I added the CRUD methods.
 
 ## Unsolved Problems and Major Hurdles
 - Users cannot create the same category name as another user

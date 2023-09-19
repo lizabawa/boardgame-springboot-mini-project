@@ -3,6 +3,8 @@ package com.example.boardgamespringbootminiproject.controller;
 import com.example.boardgamespringbootminiproject.model.Category;
 import com.example.boardgamespringbootminiproject.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,5 +46,11 @@ public class CategoryController {
     @PutMapping(path = "/categories/{categoryId}/") //http://localhost:9094/api/categories/1/
     public Optional<Category> updateCategory(@PathVariable(value = "categoryId") Long categoryId, @RequestBody Category categoryObject){
         return categoryService.updateCategory(categoryId, categoryObject);
+    }
+
+    //DELETE CATEGORY
+    @DeleteMapping(path = "categories/{categoryId}/")
+    public Optional<Category> deleteCategory(@PathVariable(value = "categoryId") Long categoryId){
+        return categoryService.deleteCategory(categoryId);
     }
 }

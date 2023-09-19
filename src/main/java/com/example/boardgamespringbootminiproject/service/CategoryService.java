@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,11 +85,12 @@ public class CategoryService {
     }
 
     //DELETE CATEGORY
-    public void deleteCategory(Long categoryId){
+    public Optional<Category> deleteCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
 
         if (categoryOptional.isPresent()){
             categoryRepository.deleteCategoryById(categoryId);
+            return categoryOptional;
         }else {
             throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
         }
