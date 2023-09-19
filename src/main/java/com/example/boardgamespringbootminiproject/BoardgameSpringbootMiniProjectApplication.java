@@ -13,4 +13,5 @@ public class BoardgameSpringbootMiniProjectApplication {
 }
 
 //TODO Add Spring security first
+//TODO Join models
 //TODO Create CRUD methods
