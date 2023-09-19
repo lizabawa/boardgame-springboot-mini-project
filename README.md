@@ -6,6 +6,7 @@
 ## Tools and Technologies Used
 - Spring Boot DevTools
 - Spring Web
+- https://git.generalassemb.ly/sureshmelvinsigera/Java-Spring-Boot-lecture/blob/spring-2-7-8/README.md#day-01
 
 ## Approach
 - I started by creating my user stories and a ERD diagram so that I could brainstorm the direction I wanted my project to take, as well as the relationships between the tables.
