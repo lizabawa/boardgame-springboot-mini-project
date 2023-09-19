@@ -13,7 +13,13 @@
 - I began my code by adding my model classes and then Spring security along with the appropriate JSON web token dependencies and added methods and classes as needed from there to get my security working correctly. Lastly, I added the CRUD methods.
 
 ## Unsolved Problems and Major Hurdles
+### Unsolved Problems
 - Users cannot create the same category name as another user
+- The deleteCategory method is not correctly functioning
+
+### Hurdles
+- Getting the security package functioning took a bit. There are so many moving parts and so many other classes and methods that needed to be working in before I could implement the security measures.
+
 ## User Stories
 - As a user, I want to login so that I can create categories and boardgame lists.
 - As a user, I want to add, update, and delete categories and boardgames, so I can maintain my lists.
