@@ -29,6 +29,8 @@
 ## ERD Diagram
 
 ## Planning
+- In terms of planning, I utilized an ERD diagram and a [spreadsheet](https://docs.google.com/spreadsheets/d/1aeuLdyFBMQ7PxdJf1v-rc167PWryu8HmBvivUike19s/edit#gid=0)
+  for my endpoints. I also utilized //TODO comments to create a to do list in order of priority and began coding by hitting each to-do item.
 
 ## Dependencies
 - Spring Web
