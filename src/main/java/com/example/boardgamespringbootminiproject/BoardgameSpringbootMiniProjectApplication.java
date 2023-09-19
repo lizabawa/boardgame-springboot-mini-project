@@ -16,3 +16,4 @@ public class BoardgameSpringbootMiniProjectApplication {
 //TODO Create user register and login models
 //TODO Add seed data
 //TODO Create CRUD methods
+//TODO add docstrings
