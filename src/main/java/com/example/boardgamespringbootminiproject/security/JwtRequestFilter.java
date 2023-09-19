@@ -13,6 +13,8 @@ import java.util.logging.Logger;
  * At every user request, this class finds information from the user and validates the information
  */
 public class JwtRequestFilter extends OncePerRequestFilter {
+    Logger logger = Logger.getLogger(JwtRequestFilter.class.getName());
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
