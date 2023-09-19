@@ -38,6 +38,7 @@ public class CategoryService {
 
     //CREATE A NEW CATEGORY
     public Category createCategory(Category categoryObject){
+        //TODO instead of findByName, try to find by name related to the currently loggedinuser to fix the bug where users cannot create the same category name as another user
         Category category = categoryRepository.findByName(categoryObject.getName());
         if (category == null){
             categoryObject.setUser(getCurrentlyLoggedInUser()); //assign this category to the currently logged in user
@@ -82,5 +83,11 @@ public class CategoryService {
             updateCategory.setName(categoryObject.getName());
             return Optional.of(categoryRepository.save(updateCategory));
         }
+    }
+
+    //DELETE CATEGORY
+    public void deleteCategory(Long categoryId){
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+        categoryRepository.deleteCategoryById(categoryOptional.get().getId());
     }
 }
