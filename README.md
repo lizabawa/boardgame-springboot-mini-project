@@ -31,3 +31,9 @@
 ## Planning
 
 ## Dependencies
+- Spring Web
+- Spring Boot Devtools
+- h2 database
+- JPA translator
+- Spring Security
+- JSON Web Token
