@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -31,5 +32,11 @@ public class CategoryController {
     @GetMapping(path = "/categories/")
     public List<Category> getCategories(){
         return categoryService.getCategories();
+    }
+
+    //GET ONE CATEGORY
+    @GetMapping(path = "/categories/{categoryId}")
+    public Optional<Category> getCategory(@PathVariable(value = "categoryId") Long categoryId){
+        return categoryService.getCategory(categoryId);
     }
 }

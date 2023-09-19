@@ -35,7 +35,7 @@ public class CategoryService {
         return userDetails.getUser();
     }
 
-    //CREATE A NEW CATEGORY //TODO Figure out why categoryObject is not saving to user
+    //CREATE A NEW CATEGORY
     public Category createCategory(Category categoryObject){
         Category category = categoryRepository.findByName(categoryObject.getName());
         if (category == null){
@@ -66,8 +66,6 @@ public class CategoryService {
         } else {
             return categoryOptional;
         }
-
-        //if the category does NOT exist, throw an error otherwise return the category
 
     }
 }
