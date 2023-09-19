@@ -23,6 +23,6 @@ public class CategoryController {
 
     @GetMapping(path = "/hello") //http://localhost:9094/api/hello/
     public String getHelloWorld(){
-        return "Hello World";
+        return categoryService.getHelloWorld();
     }
 }
