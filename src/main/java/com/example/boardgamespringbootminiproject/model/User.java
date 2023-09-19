@@ -30,6 +30,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Category> categoryList;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "user")
+    private List<Boardgame> boardgameList;
+
     @OneToOne(cascade = CascadeType.ALL) //if user exists, fetch all data assoc w user
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
@@ -97,6 +101,14 @@ public class User {
 
     public void setCategoryList(List<Category> categoryList) {
         this.categoryList = categoryList;
+    }
+
+    public List<Boardgame> getBoardgameList() {
+        return boardgameList;
+    }
+
+    public void setBoardgameList(List<Boardgame> boardgameList) {
+        this.boardgameList = boardgameList;
     }
 
     @Override

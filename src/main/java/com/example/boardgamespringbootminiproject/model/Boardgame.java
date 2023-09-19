@@ -1,5 +1,7 @@
 package com.example.boardgamespringbootminiproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,11 @@ public class Boardgame {
 
     @Column
     private Integer ageRange;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
     public Boardgame() {
     }
@@ -67,6 +74,14 @@ public class Boardgame {
 
     public void setAgeRange(Integer ageRange) {
         this.ageRange = ageRange;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
