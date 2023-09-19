@@ -1,5 +1,6 @@
 package com.example.boardgamespringbootminiproject.service;
 
+import com.example.boardgamespringbootminiproject.model.Category;
 import com.example.boardgamespringbootminiproject.model.User;
 import com.example.boardgamespringbootminiproject.repository.BoardgameRepository;
 import com.example.boardgamespringbootminiproject.repository.CategoryRepository;
@@ -23,8 +24,18 @@ public class CategoryService {
         this.boardgameRepository = boardgameRepository;
     }
 
+    //GET CURRENT LOGGED IN USER
     public User getCurrentlyLoggedInUser(){
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); //once user is authorized via JWT, grabs the users login details
         return userDetails.getUser();
+    }
+
+    //CREATE A NEW CATEGORY
+    public void createCategory(Category categoryObject){
+        Category category = categoryRepository.findByName(categoryObject.getName());
+        if ()
+
+            //if categoryObect does not exist, go ahead and create it
+            //else throw InformationAlreadyExistsException
     }
 }
