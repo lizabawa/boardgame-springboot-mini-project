@@ -1,5 +1,6 @@
 package com.example.boardgamespringbootminiproject.service;
 
+import com.example.boardgamespringbootminiproject.exception.InformationAlreadyExistsException;
 import com.example.boardgamespringbootminiproject.model.User;
 import com.example.boardgamespringbootminiproject.repository.UserRepository;
 import com.example.boardgamespringbootminiproject.security.JWTUtils;
