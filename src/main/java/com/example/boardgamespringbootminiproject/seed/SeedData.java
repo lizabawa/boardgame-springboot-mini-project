@@ -37,7 +37,7 @@ public class SeedData implements CommandLineRunner {
         User user = new User();
         user.setUserName("liz");
         user.setEmailAddress("liz@ga.com");
-        user.setPassword("pw123");
+        user.setPassword(passwordEncoder.encode("liz123"));
         userRepository.save(user);
 
         Category category1 = new Category();

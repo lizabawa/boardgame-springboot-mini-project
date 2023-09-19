@@ -34,7 +34,7 @@ public class CategoryService {
     //CREATE A NEW CATEGORY
     public Category createCategory(Category categoryObject){
         Category category = categoryRepository.findByName(categoryObject.getName());
-        if (category != null){
+        if (category == null){
             categoryObject.setUser(getCurrentlyLoggedInUser()); //assign this category to the currently logged in user
             return categoryRepository.save(categoryObject);
         } else {
