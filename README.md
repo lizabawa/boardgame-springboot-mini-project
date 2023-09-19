@@ -25,17 +25,17 @@
 - The deleteCategory method is not correctly functioning
 
 ### Hurdles
-- Getting the security package functioning took a bit. There are so many moving parts and so many other classes and methods that needed to be working in before I could implement the security measures.
+- Getting the security package functioning took the longest. There are so many moving parts and so many other classes and methods that needed to be functioning before I could implement the security measures.
 
 ## User Stories
 - As a user, I want to login so that I can create categories and boardgame lists.
 - As a user, I want to add, update, and delete categories and boardgames, so I can maintain my lists.
-- As a user, I want to set my login information, so I can login using that information.
+- As a user, I want to create my login information, so I can login using that information.
 - As a user, I want to login using accurate credentials, so that my account can only be accessed with the accurate credentials.
 
 ## ERD Diagram
 - I found it easier to create my ERD diagram by hand on a whiteboard than using an online tool. The photo below was not the final version of my ERD diagram but it gave me a good idea of how to organize my code.
-![ERD Diagram](src/image/ERD Diagram.jpeg)
+![ERD Diagram](https://github.com/lizabawa/boardgame-springboot-mini-project/blob/fa79a37ee68e2c1a36b08e60ed467a0a2797b27e/src/image/ERD%20Diagram.jpeg)
 
 
 ## Planning
