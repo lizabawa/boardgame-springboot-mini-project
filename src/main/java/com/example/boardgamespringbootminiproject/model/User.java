@@ -1,8 +1,11 @@
 package com.example.boardgamespringbootminiproject.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -22,6 +25,10 @@ public class User {
     @Column
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "user")
+    private List<Category> categoryList;
 
     @OneToOne(cascade = CascadeType.ALL) //if user exists, fetch all data assoc w user
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
@@ -82,6 +89,14 @@ public class User {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     @Override
