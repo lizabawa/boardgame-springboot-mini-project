@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,7 +58,7 @@ public class CategoryService {
         }
     }
 
-    //GET ONE CATEGORY
+    //GET A CATEGORY
     public Optional<Category> getCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
 
@@ -66,6 +67,23 @@ public class CategoryService {
         } else {
             return categoryOptional;
         }
+    }
+
+    //UPDATE A CATEGORY
+    public Optional<Category> updateCategory(Long categoryId, Category categoryObject){
+        //if category does nto exist OR is equal to the current info then throw an error otherwise save the updated info to categoryrepository
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+
+        if (categoryOptional.isEmpty()){
+            throw new InformationNotFoundException("Category with id of " + categoryId + " not found.");
+        } else if (categoryOptional.equals()) {
+            throw new InformationAlreadyExistsException("Category with id of " + categoryId + " is already up to date");
+        } else {
+            Category updateCategory = categoryRepository.findById(categoryId).get();
+            updateCategory.setName(categoryObject.getName());
+            return Optional.of(categoryRepository.save(updateCategory));
+        }
+
 
     }
 }

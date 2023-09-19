@@ -34,7 +34,7 @@ public class CategoryController {
         return categoryService.getCategories();
     }
 
-    //GET ONE CATEGORY
+    //GET A CATEGORY
     @GetMapping(path = "/categories/{categoryId}")
     public Optional<Category> getCategory(@PathVariable(value = "categoryId") Long categoryId){
         return categoryService.getCategory(categoryId);
