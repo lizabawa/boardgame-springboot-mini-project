@@ -23,6 +23,11 @@ public class Boardgame {
     private Integer ageRange;
 
     @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
@@ -37,11 +42,12 @@ public class Boardgame {
      * @param players This is the number of players the boardgame can have.
      * @param ageRange This is the age range that the boardgame is meant for.
      */
-    public Boardgame(Long id, String name, Integer players, Integer ageRange) {
+    public Boardgame(Long id, String name, Integer players, Integer ageRange, Category category) {
         this.id = id;
         this.name = name;
         this.players = players;
         this.ageRange = ageRange;
+        this.category = category;
     }
 
     public Long getId() {
@@ -84,6 +90,14 @@ public class Boardgame {
         this.user = user;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Boardgame{" +
@@ -91,6 +105,7 @@ public class Boardgame {
                 ", name='" + name + '\'' +
                 ", players=" + players +
                 ", ageRange=" + ageRange +
+                ", category=" + category +
                 '}';
     }
 }

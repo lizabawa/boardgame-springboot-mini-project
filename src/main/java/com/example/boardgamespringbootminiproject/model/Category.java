@@ -1,8 +1,11 @@
 package com.example.boardgamespringbootminiproject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -15,6 +18,10 @@ public class Category {
 
     @Column
     private String name;
+
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE) //when category instance is searched, fetch all assoc boardgames
+    private List<Boardgame> boardgameList;
 
     @ManyToOne
     @JsonIgnore
@@ -58,11 +65,20 @@ public class Category {
         this.user = user;
     }
 
+    public List<Boardgame> getBoardgameList() {
+        return boardgameList;
+    }
+
+    public void setBoardgameList(List<Boardgame> boardgameList) {
+        this.boardgameList = boardgameList;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", boardgameList=" + boardgameList +
                 '}';
     }
 }
