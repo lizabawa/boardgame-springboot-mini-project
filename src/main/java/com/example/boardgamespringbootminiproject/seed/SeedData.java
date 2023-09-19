@@ -1,5 +1,8 @@
 package com.example.boardgamespringbootminiproject.seed;
 
+import com.example.boardgamespringbootminiproject.model.Boardgame;
+import com.example.boardgamespringbootminiproject.model.Category;
+import com.example.boardgamespringbootminiproject.model.User;
 import com.example.boardgamespringbootminiproject.repository.BoardgameRepository;
 import com.example.boardgamespringbootminiproject.repository.CategoryRepository;
 import com.example.boardgamespringbootminiproject.repository.UserRepository;
@@ -31,6 +34,44 @@ public class SeedData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        User user = new User();
+        user.setUserName("liz");
+        user.setEmailAddress("liz@ga.com");
+        user.setPassword("pw123");
+        userRepository.save(user);
 
+        Category category1 = new Category();
+        category1.setName("campaign");
+        category1.setUser(user);
+        categoryRepository.save(category1);
+
+        Category category2 = new Category();
+        category2.setName("card");
+        category2.setUser(user);
+        categoryRepository.save(category2);
+
+        Boardgame boardgame1 = new Boardgame();
+        boardgame1.setName("charterstone");
+        boardgame1.setPlayers(1-6);
+        boardgame1.setTime(60);
+        boardgame1.setCategory(category1);
+        boardgame1.setUser(user);
+        boardgameRepository.save(boardgame1);
+
+        Boardgame boardgame2 = new Boardgame();
+        boardgame2.setName("gloomhaven");
+        boardgame2.setPlayers(1-4);
+        boardgame2.setTime(120);
+        boardgame2.setCategory(category1);
+        boardgame2.setUser(user);
+        boardgameRepository.save(boardgame2);
+
+        Boardgame boardgame3 = new Boardgame();
+        boardgame3.setName("wingspan");
+        boardgame3.setPlayers(1-5);
+        boardgame3.setTime(70);
+        boardgame3.setCategory(category2);
+        boardgame3.setUser(user);
+        boardgameRepository.save(boardgame3);
     }
 }

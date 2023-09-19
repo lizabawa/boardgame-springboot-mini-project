@@ -20,7 +20,7 @@ public class Boardgame {
     private Integer players;
 
     @Column
-    private Integer ageRange;
+    private Integer time;
 
     @ManyToOne
     @JsonIgnore
@@ -40,13 +40,13 @@ public class Boardgame {
      * @param id This is the boardgame id.
      * @param name This is the boardgame name.
      * @param players This is the number of players the boardgame can have.
-     * @param ageRange This is the age range that the boardgame is meant for.
+     * @param time This is the age range that the boardgame is meant for.
      */
-    public Boardgame(Long id, String name, Integer players, Integer ageRange, Category category) {
+    public Boardgame(Long id, String name, Integer players, Integer time, Category category) {
         this.id = id;
         this.name = name;
         this.players = players;
-        this.ageRange = ageRange;
+        this.time = time;
         this.category = category;
     }
 
@@ -74,12 +74,12 @@ public class Boardgame {
         this.players = players;
     }
 
-    public Integer getAgeRange() {
-        return ageRange;
+    public Integer getTime() {
+        return time;
     }
 
-    public void setAgeRange(Integer ageRange) {
-        this.ageRange = ageRange;
+    public void setTime(Integer ageRange) {
+        this.time = ageRange;
     }
 
     public User getUser() {
@@ -104,7 +104,7 @@ public class Boardgame {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", players=" + players +
-                ", ageRange=" + ageRange +
+                ", ageRange=" + time +
                 ", category=" + category +
                 '}';
     }
