@@ -24,6 +24,16 @@ public class UserService {
         this.authenticationManager = authenticationManager;
     }
 
+    //REGISTER USER
+    public User createUser(User userObject){
+        if(!userRepository.existsByEmailAddress(userObject.getEmailAddress())){
+            userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
+            return userRepository.save(userObject);
+        }else {
+            throw new InformationAlreadyExistsException("A user with the email " + userObject.getEmailAddress() + " already exists.");
+        }
+    }
+
     public User findUserByEmailAddress(String emailAddress){
         return userRepository.findUserByEmailAddress(emailAddress);
     }
