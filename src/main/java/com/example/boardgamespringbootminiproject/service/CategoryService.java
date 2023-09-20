@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /**
@@ -62,15 +63,17 @@ public class CategoryService {
     public Boardgame createCategoryBoardgame(Long categoryId, Boardgame boardgameObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         Optional<Boardgame> boardgameOptional = Optional.ofNullable(boardgameRepository.findByNameAndUserId(boardgameObject.getName(), getCurrentlyLoggedInUser().getId()));
-        if (categoryOptional != null){
+
+        if (categoryOptional.isPresent()){
             if (boardgameOptional.isEmpty()){
-            boardgameObject.setCategory(categoryOptional.get());
-            return boardgameRepository.save(boardgameObject);
-            }else {
-                throw new InformationAlreadyExistsException("Boardgame with name of " + boardgameObject.getName() + " already exists.");
+                boardgameObject.setCategory(categoryOptional.get());
+                boardgameObject.setUser(getCurrentlyLoggedInUser());
+                return boardgameRepository.save(boardgameObject);
+            } else {
+                throw new InformationAlreadyExistsException("boardgame already exists");
             }
         } else {
-            throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
+           throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
         }
     }
 
