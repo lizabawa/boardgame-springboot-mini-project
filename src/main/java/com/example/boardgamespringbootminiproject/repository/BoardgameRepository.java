@@ -1,7 +1,6 @@
 package com.example.boardgamespringbootminiproject.repository;
 
 import com.example.boardgamespringbootminiproject.model.Boardgame;
-import com.example.boardgamespringbootminiproject.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

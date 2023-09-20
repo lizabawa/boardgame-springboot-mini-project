@@ -41,13 +41,6 @@ public class Category {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -63,14 +56,6 @@ public class Category {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<Boardgame> getBoardgameList() {
-        return boardgameList;
-    }
-
-    public void setBoardgameList(List<Boardgame> boardgameList) {
-        this.boardgameList = boardgameList;
     }
 
     @Override

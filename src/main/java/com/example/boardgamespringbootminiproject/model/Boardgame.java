@@ -17,7 +17,7 @@ public class Boardgame {
     private String name;
 
     @Column
-    private Integer players;
+    private Integer maxPlayers;
 
     @Column
     private Integer time;
@@ -39,23 +39,15 @@ public class Boardgame {
      * This class is used to set and get any information pertaining to a boardgame.
      * @param id This is the boardgame id.
      * @param name This is the boardgame name.
-     * @param players This is the number of players the boardgame can have.
+     * @param maxPlayers This is the number of players the boardgame can have.
      * @param time This is the age range that the boardgame is meant for.
      */
-    public Boardgame(Long id, String name, Integer players, Integer time, Category category) {
+    public Boardgame(Long id, String name, Integer maxPlayers, Integer time, Category category) {
         this.id = id;
         this.name = name;
-        this.players = players;
+        this.maxPlayers = maxPlayers;
         this.time = time;
         this.category = category;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -66,12 +58,12 @@ public class Boardgame {
         this.name = name;
     }
 
-    public Integer getPlayers() {
-        return players;
+    public Integer getMaxPlayers() {
+        return maxPlayers;
     }
 
-    public void setPlayers(Integer players) {
-        this.players = players;
+    public void setMaxPlayers(Integer players) {
+        this.maxPlayers = players;
     }
 
     public Integer getTime() {
@@ -90,10 +82,6 @@ public class Boardgame {
         this.user = user;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -103,7 +91,7 @@ public class Boardgame {
         return "Boardgame{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", players=" + players +
+                ", players=" + maxPlayers +
                 ", ageRange=" + time +
                 ", category=" + category +
                 '}';

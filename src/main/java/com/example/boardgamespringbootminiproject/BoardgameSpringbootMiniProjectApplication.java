@@ -11,5 +11,3 @@ public class BoardgameSpringbootMiniProjectApplication {
     }
 
 }
-
-//TODO Create CRUD methods

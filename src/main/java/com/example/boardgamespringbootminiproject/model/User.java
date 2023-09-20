@@ -55,14 +55,6 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -81,22 +73,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Category> getCategoryList() {
-        return categoryList;
-    }
-
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
-    }
-
-    public List<Boardgame> getBoardgameList() {
-        return boardgameList;
-    }
-
-    public void setBoardgameList(List<Boardgame> boardgameList) {
-        this.boardgameList = boardgameList;
     }
 
     @Override

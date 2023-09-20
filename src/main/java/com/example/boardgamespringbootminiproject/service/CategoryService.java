@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -78,7 +77,6 @@ public class CategoryService {
     //GET ALL CATEGORIES
     public List<Category> getCategories(){
         List<Category> categoryList = categoryRepository.findByUserId(getCurrentlyLoggedInUser().getId());
-
         if (categoryList.isEmpty()){
             throw new InformationNotFoundException("No categories found for user with id " + getCurrentlyLoggedInUser().getId());
         } else {
@@ -99,7 +97,6 @@ public class CategoryService {
     //GET A CATEGORY
     public Optional<Category> getCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-
         if (categoryOptional.isEmpty()){
             throw new InformationNotFoundException("Category with an id " + categoryId + " not found.");
         } else {
@@ -111,7 +108,6 @@ public class CategoryService {
     public Optional<Boardgame> getCategoryBoardgame(Long categoryId, Long boardgameId){
         Optional<Boardgame> boardgameOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-
         if (categoryOptional.isPresent()) {
             if (boardgameOptional.isPresent()) {
                 return boardgameOptional;
@@ -126,7 +122,6 @@ public class CategoryService {
     //UPDATE A CATEGORY
     public Optional<Category> updateCategory(Long categoryId, Category categoryObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-
         if (categoryOptional.isEmpty()){
             throw new InformationNotFoundException("Category with id of " + categoryId + " not found.");
         } else if (categoryOptional.equals(categoryObject)) {
@@ -142,7 +137,6 @@ public class CategoryService {
     public Optional<Boardgame> updateCategoryBoardgame(Long categoryId, Long boardgameId, Boardgame boardgameObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         Optional<Boardgame> itemOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
-
         if(categoryOptional.isPresent()) {
             if(itemOptional.isPresent()){
                 if(boardgameObject.equals(itemOptional.get())){
@@ -150,7 +144,7 @@ public class CategoryService {
                 }else {
                     Boardgame updateBoardgame = boardgameRepository.findById(boardgameId).get();
                     updateBoardgame.setName(boardgameObject.getName());
-                    updateBoardgame.setPlayers(boardgameObject.getPlayers());
+                    updateBoardgame.setMaxPlayers(boardgameObject.getMaxPlayers());
                     updateBoardgame.setTime(boardgameObject.getTime());
                     return Optional.of(boardgameRepository.save(updateBoardgame));
                 }
@@ -165,7 +159,6 @@ public class CategoryService {
     //DELETE CATEGORY
     public Optional<Category> deleteCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-
         if (categoryOptional.isPresent()){
             categoryRepository.deleteCategoryById(categoryId);
             return categoryOptional;
@@ -178,7 +171,6 @@ public class CategoryService {
     public Optional<Boardgame> deleteCategoryBoardgame(Long categoryId, Long boardgameId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         Optional<Boardgame> itemOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
-
         if (categoryOptional.isPresent()) {
             if (itemOptional.isPresent()) {
                 boardgameRepository.deleteById(boardgameId);
