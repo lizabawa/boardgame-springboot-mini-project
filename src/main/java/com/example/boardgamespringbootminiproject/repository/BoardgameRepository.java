@@ -10,8 +10,6 @@ import java.util.List;
 public interface BoardgameRepository extends JpaRepository<Boardgame, Long> {
     Boardgame findByNameAndUserId(String boardgameName, Long userId);
 
-    Boardgame findByName(String boardgameName);
-
     List<Boardgame> findAllByCategoryId(Long categoryId);
 
     Boardgame findByIdAndUserId(Long boardgameId, Long userId);

@@ -70,7 +70,7 @@ public class CategoryService {
                 boardgameObject.setUser(getCurrentlyLoggedInUser());
                 return boardgameRepository.save(boardgameObject);
             } else {
-                throw new InformationAlreadyExistsException("boardgame already exists");
+                throw new InformationAlreadyExistsException("Boardgame with name " + boardgameObject.getName() + " already exists");
             }
         } else {
            throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
