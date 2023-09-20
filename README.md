@@ -21,11 +21,10 @@
 
 ## Unsolved Problems and Major Hurdles
 ### Unsolved Problems
-- Users cannot create the same category name as another user
 - The deleteCategory method is not correctly functioning
 
 ### Hurdles
-- Getting the security package functioning took the longest. There are so many moving parts and so many other classes and methods that needed to be functioning before I could implement the security measures.
+- Getting the security package functioning took the longest. There are so many moving parts and so many other classes and methods that needed to be in place before I could implement the security measures.
 
 ## User Stories
 - As a user, I want to login so that I can create categories and boardgame lists.
