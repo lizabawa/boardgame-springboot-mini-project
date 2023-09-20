@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -134,6 +135,30 @@ public class CategoryService {
             Category updateCategory = categoryRepository.findById(categoryId).get();
             updateCategory.setName(categoryObject.getName());
             return Optional.of(categoryRepository.save(updateCategory));
+        }
+    }
+
+    //UPDATE CATEGORY BOARDGAME
+    public Optional<Boardgame> updateCategoryBoardgame(Long categoryId, Long boardgameId, Boardgame boardgameObject){
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+        Optional<Boardgame> itemOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
+
+        if(categoryOptional.isPresent()) {
+            if(itemOptional.isPresent()){
+                if(boardgameObject.equals(itemOptional.get())){
+                    throw new InformationAlreadyExistsException("Boardgame has already been updated");
+                }else {
+                    Boardgame updateBoardgame = boardgameRepository.findById(boardgameId).get();
+                    updateBoardgame.setName(boardgameObject.getName());
+                    updateBoardgame.setPlayers(boardgameObject.getPlayers());
+                    updateBoardgame.setTime(boardgameObject.getTime());
+                    return Optional.of(boardgameRepository.save(updateBoardgame));
+                }
+            } else {
+                throw new InformationNotFoundException("Cannot find an item of id " + boardgameId);
+            }
+        } else {
+            throw new InformationNotFoundException("Cannot find a category of id " + categoryId);
         }
     }
 

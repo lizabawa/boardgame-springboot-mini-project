@@ -65,6 +65,12 @@ public class CategoryController {
         return categoryService.updateCategory(categoryId, categoryObject);
     }
 
+    //UPDATE CATEGORY BOARDGAME
+    @PutMapping(path = "/categories/{categoryId}/boardgames/{boardgameId}")
+    public Optional<Boardgame> updateCategoryBoardgame(@PathVariable(value = "categoryId") Long categoryId, @PathVariable(value = "boardgameId") Long boardgameId, @RequestBody Boardgame boardgameObject){
+        return categoryService.updateCategoryBoardgame(categoryId, boardgameId, boardgameObject);
+    }
+
     //DELETE CATEGORY
     @DeleteMapping(path = "categories/{categoryId}/")
     public Optional<Category> deleteCategory(@PathVariable(value = "categoryId") Long categoryId){
