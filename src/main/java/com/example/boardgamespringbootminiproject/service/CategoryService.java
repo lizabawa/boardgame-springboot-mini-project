@@ -14,16 +14,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This class contains the business logic for Category and Boardgame CRUD methods.
+ */
 @Service
 public class CategoryService {
     private CategoryRepository categoryRepository;
     private BoardgameRepository boardgameRepository;
 
+    /**
+     *
+     * @param categoryRepository This is the repository that contains all categories.
+     */
     @Autowired
     public void setCategoryRepository(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
+    /**
+     *
+     * @param boardgameRepository This is the repository that contains all boardgames.
+     */
     @Autowired
     public void setBoardgameRepository(BoardgameRepository boardgameRepository) {
         this.boardgameRepository = boardgameRepository;

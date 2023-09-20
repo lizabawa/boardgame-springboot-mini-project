@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
+/**
+ * This class is the controller for the User class.
+ */
 @RestController
 @RequestMapping(path = "/auth/users/") //http://localhost:9094/auth/users/
 public class UserController {

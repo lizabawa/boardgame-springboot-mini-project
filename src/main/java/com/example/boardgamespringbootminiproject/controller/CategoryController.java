@@ -3,8 +3,6 @@ package com.example.boardgamespringbootminiproject.controller;
 import com.example.boardgamespringbootminiproject.model.Category;
 import com.example.boardgamespringbootminiproject.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

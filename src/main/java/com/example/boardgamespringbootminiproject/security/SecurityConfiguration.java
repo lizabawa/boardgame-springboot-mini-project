@@ -11,6 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * This class configures the security that only allows access to authorized users
+ */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true) //must be authorized to gain access to endpoints
 public class SecurityConfiguration {

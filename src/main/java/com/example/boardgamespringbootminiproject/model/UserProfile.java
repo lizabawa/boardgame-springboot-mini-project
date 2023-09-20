@@ -29,6 +29,13 @@ public class UserProfile {
     public UserProfile() {
     }
 
+    /**
+     * This class is used to get and set any information pertaining to a the users profile.
+     * @param id This is the user profile id.
+     * @param firstName This is the users first name.
+     * @param lastName This is the users last name.
+     * @param profileDescription This is the users description.
+     */
     public UserProfile(Long id, String firstName, String lastName, String profileDescription) {
         this.id = id;
         this.firstName = firstName;

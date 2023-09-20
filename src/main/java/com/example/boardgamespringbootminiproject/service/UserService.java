@@ -24,6 +24,13 @@ public class UserService {
     private final JWTUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
 
+    /**
+     * This class contains the business logic for Registering and logging in a user
+     * @param userRepository This is the repository that contains all users details.
+     * @param passwordEncoder This encodes a password.
+     * @param jwtUtils This is the JWTUtils class we created that generates and validates JWT tokens upon CRUD requests.
+     * @param authenticationManager This is used for authentication.
+     */
     @Autowired
     public UserService(UserRepository userRepository, @Lazy PasswordEncoder passwordEncoder, JWTUtils jwtUtils, @Lazy AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
