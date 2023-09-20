@@ -15,5 +15,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     //find by categoryId AND userId
     Category findByIdAndUserId(Long categoryId, Long userId);
 
+    Category findByNameAndUserId(String categoryName, Long userId);
+
     void deleteCategoryById(Long categoryId);
 }
