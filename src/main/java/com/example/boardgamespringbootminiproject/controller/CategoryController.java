@@ -76,4 +76,10 @@ public class CategoryController {
     public Optional<Category> deleteCategory(@PathVariable(value = "categoryId") Long categoryId){
         return categoryService.deleteCategory(categoryId);
     }
+
+    //DELETE CATEGORY BOARDGAME
+    @DeleteMapping(path = "categories/{categoryId}/boardgames/{boardgameId}")
+    public Optional<Boardgame> deleteCategoryBoardgame(@PathVariable(value = "categoryId") Long categoryId, @PathVariable(value = "boardgameId") Long boardgameId){
+        return categoryService.deleteCategoryBoardgame(categoryId, boardgameId);
+    }
 }

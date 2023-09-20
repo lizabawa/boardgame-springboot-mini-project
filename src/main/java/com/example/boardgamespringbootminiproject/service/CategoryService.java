@@ -173,4 +173,21 @@ public class CategoryService {
             throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
         }
     }
+
+    //DELETE CATEGORY BOARDGAME
+    public Optional<Boardgame> deleteCategoryBoardgame(Long categoryId, Long boardgameId){
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+        Optional<Boardgame> itemOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
+
+        if (categoryOptional.isPresent()) {
+            if (itemOptional.isPresent()) {
+                boardgameRepository.deleteById(boardgameId);
+                return itemOptional;
+            } else {
+                throw new InformationNotFoundException("Unable to delete as id " + boardgameId + " does not exist");
+            }
+        }else {
+            throw new InformationNotFoundException("Unable to delete as category " + categoryId + " does not exist");
+        }
+    }
 }
