@@ -52,7 +52,7 @@ public class SeedData implements CommandLineRunner {
 
         Boardgame boardgame1 = new Boardgame();
         boardgame1.setName("charterstone");
-        boardgame1.setPlayers(1-6);
+        boardgame1.setPlayers(6);
         boardgame1.setTime(60);
         boardgame1.setCategory(category1);
         boardgame1.setUser(user);
@@ -60,7 +60,7 @@ public class SeedData implements CommandLineRunner {
 
         Boardgame boardgame2 = new Boardgame();
         boardgame2.setName("gloomhaven");
-        boardgame2.setPlayers(1-4);
+        boardgame2.setPlayers(4);
         boardgame2.setTime(120);
         boardgame2.setCategory(category1);
         boardgame2.setUser(user);
@@ -68,7 +68,7 @@ public class SeedData implements CommandLineRunner {
 
         Boardgame boardgame3 = new Boardgame();
         boardgame3.setName("wingspan");
-        boardgame3.setPlayers(1-5);
+        boardgame3.setPlayers(5);
         boardgame3.setTime(70);
         boardgame3.setCategory(category2);
         boardgame3.setUser(user);

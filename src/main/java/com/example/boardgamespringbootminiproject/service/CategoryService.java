@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,9 +93,6 @@ public class CategoryService {
         } else {
             throw new InformationNotFoundException("No boardgames found for category with id " + categoryId);
         }
-//        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-//        List<Boardgame> boardgameList = boardgameRepository.findAllById(getCurrentlyLoggedInUser().getId());
-//        if ()
     }
 
     //GET A CATEGORY
@@ -107,6 +103,22 @@ public class CategoryService {
             throw new InformationNotFoundException("Category with an id " + categoryId + " not found.");
         } else {
             return categoryOptional;
+        }
+    }
+
+    //GET A BOARDGAME FROM A CATEGORY
+    public Optional<Boardgame> getCategoryBoardgame(Long categoryId, Long boardgameId){
+        Optional<Boardgame> boardgameOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+
+        if (categoryOptional.isPresent()) {
+            if (boardgameOptional.isPresent()) {
+                return boardgameOptional;
+            } else {
+                throw new InformationNotFoundException("Item " + boardgameId + " not found");
+            }
+        }else {
+            throw new InformationNotFoundException("category " + categoryId + " not found");
         }
     }
 

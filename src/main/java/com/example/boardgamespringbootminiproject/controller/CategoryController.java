@@ -53,6 +53,12 @@ public class CategoryController {
         return categoryService.getCategory(categoryId);
     }
 
+    //GET A BOARDGAME FROM A CATEGORY
+    @GetMapping(path = "/categories/{categoryId}/boardgames/{boardgameId}/") //http://localhost:9094/api/categories/1/boardgames/1/
+    public Optional<Boardgame> getCategoryBoardgame(@PathVariable(value = "categoryId") Long categoryId, @PathVariable(value = "boardgameId") Long boardgameId){
+        return categoryService.getCategoryBoardgame(categoryId, boardgameId);
+    }
+
     //UPDATE A CATEGORY
     @PutMapping(path = "/categories/{categoryId}/") //http://localhost:9094/api/categories/1/
     public Optional<Category> updateCategory(@PathVariable(value = "categoryId") Long categoryId, @RequestBody Category categoryObject){

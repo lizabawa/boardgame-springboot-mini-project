@@ -12,4 +12,6 @@ public interface BoardgameRepository extends JpaRepository<Boardgame, Long> {
     Boardgame findByNameAndUserId(String boardgameName, Long userId);
 
     List<Boardgame> findAllByCategoryId(Long categoryId);
+
+    Boardgame findByIdAndUserId(Long boardgameId, Long userId);
 }
