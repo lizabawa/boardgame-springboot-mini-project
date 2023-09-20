@@ -1,5 +1,6 @@
 package com.example.boardgamespringbootminiproject.controller;
 
+import com.example.boardgamespringbootminiproject.model.Boardgame;
 import com.example.boardgamespringbootminiproject.model.Category;
 import com.example.boardgamespringbootminiproject.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class CategoryController {
     @PostMapping(path = "/categories/") //http://localhost:9094/api/categories/
     public Category createCategory(@RequestBody Category categoryObject){
         return categoryService.createCategory(categoryObject);
+    }
+
+    //CREATE A CATEGORY BOARDGAME ITEM
+    @PostMapping(path = "/categories/{categoryId}/") //http://localhost:9094/api/categories/1/
+    public Boardgame createCategoryBoardgame(@PathVariable(value = "categoryId") Long categoryId, @RequestBody Boardgame boardgameObject){
+        return categoryService.createCategoryBoardgame(categoryId, boardgameObject);
     }
 
     //GET ALL CATEGORIES
