@@ -34,10 +34,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Boardgame> boardgameList;
 
-    @OneToOne(cascade = CascadeType.ALL) //if user exists, fetch all data assoc w user
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    private UserProfile userProfile;
-
     public User() {
     }
 
@@ -85,14 +81,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
-
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
     }
 
     public List<Category> getCategoryList() {
