@@ -2,6 +2,7 @@ package com.example.boardgamespringbootminiproject.service;
 
 import com.example.boardgamespringbootminiproject.exception.InformationAlreadyExistsException;
 import com.example.boardgamespringbootminiproject.exception.InformationNotFoundException;
+import com.example.boardgamespringbootminiproject.model.Boardgame;
 import com.example.boardgamespringbootminiproject.model.Category;
 import com.example.boardgamespringbootminiproject.model.User;
 import com.example.boardgamespringbootminiproject.repository.BoardgameRepository;
@@ -54,6 +55,17 @@ public class CategoryService {
             return categoryRepository.save(categoryObject);
         } else {
             throw new InformationAlreadyExistsException("Category " + categoryObject.getName() + " already exists.");
+        }
+    }
+
+    //CREATE A CATEGORY BOARDGAME ITEM
+    public Boardgame createCategoryBoardgame(Long categoryId, Boardgame boardgameObject){
+        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+        if (categoryOptional == null){
+            boardgameObject.setCategory(categoryOptional.get()); //assign this category to the currently logged in user
+            return boardgameRepository.save(boardgameObject);
+        } else {
+            throw new InformationAlreadyExistsException("Category " + boardgameObject.getName() + " already exists.");
         }
     }
 
