@@ -41,6 +41,12 @@ public class CategoryController {
         return categoryService.getCategories();
     }
 
+    //GET ALL BOARDGAMES WITHIN A CATEGORY
+    @GetMapping(path = "/categories/{categoryId}/boardgames/") //http://localhost:9094/api/categories/1/boardgames/
+    public List<Boardgame> getCategoryBoardgames(@PathVariable(value = "categoryId") Long categoryId){
+        return categoryService.getCategoryBoardgames(categoryId);
+    }
+
     //GET A CATEGORY
     @GetMapping(path = "/categories/{categoryId}")
     public Optional<Category> getCategory(@PathVariable(value = "categoryId") Long categoryId){

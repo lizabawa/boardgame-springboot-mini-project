@@ -86,6 +86,19 @@ public class CategoryService {
         }
     }
 
+    //GET ALL BOARDGAMES WITHIN A CATEGORY
+    public List<Boardgame> getCategoryBoardgames(Long categoryId){
+        List<Category> categoryOptional = categoryRepository.findByUserId(getCurrentlyLoggedInUser().getId());
+        if (categoryOptional != null){
+            return boardgameRepository.findAllByCategoryId(categoryId);
+        } else {
+            throw new InformationNotFoundException("No boardgames found for category with id " + categoryId);
+        }
+//        Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
+//        List<Boardgame> boardgameList = boardgameRepository.findAllById(getCurrentlyLoggedInUser().getId());
+//        if ()
+    }
+
     //GET A CATEGORY
     public Optional<Category> getCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
