@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,11 +62,16 @@ public class CategoryService {
     //CREATE A CATEGORY BOARDGAME ITEM
     public Boardgame createCategoryBoardgame(Long categoryId, Boardgame boardgameObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
-        if (categoryOptional == null){
-            boardgameObject.setCategory(categoryOptional.get()); //assign this category to the currently logged in user
+        Optional<Boardgame> boardgameOptional = Optional.ofNullable(boardgameRepository.findByNameAndUserId(boardgameObject.getName(), getCurrentlyLoggedInUser().getId()));
+        if (categoryOptional != null){
+            if (boardgameOptional.isEmpty()){
+            boardgameObject.setCategory(categoryOptional.get());
             return boardgameRepository.save(boardgameObject);
+            }else {
+                throw new InformationAlreadyExistsException("Boardgame with name of " + boardgameObject.getName() + " already exists.");
+            }
         } else {
-            throw new InformationAlreadyExistsException("Category " + boardgameObject.getName() + " already exists.");
+            throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
         }
     }
 

@@ -30,7 +30,7 @@ public class CategoryController {
     }
 
     //CREATE A CATEGORY BOARDGAME ITEM
-    @PostMapping(path = "/categories/{categoryId}/") //http://localhost:9094/api/categories/1/
+    @PostMapping(path = "/categories/{categoryId}/boardgames/") //http://localhost:9094/api/categories/1/boardgames/
     public Boardgame createCategoryBoardgame(@PathVariable(value = "categoryId") Long categoryId, @RequestBody Boardgame boardgameObject){
         return categoryService.createCategoryBoardgame(categoryId, boardgameObject);
     }
