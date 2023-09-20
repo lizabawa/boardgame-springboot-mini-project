@@ -41,6 +41,7 @@
 ## Planning
 - In terms of planning, I utilized an ERD diagram and a [spreadsheet](https://docs.google.com/spreadsheets/d/1aeuLdyFBMQ7PxdJf1v-rc167PWryu8HmBvivUike19s/edit#gid=0)
   for my endpoints. I also utilized //TODO comments to create a to do list in order of priority and began coding by hitting each to-do item.
+![Endpoints](https://github.com/lizabawa/boardgame-springboot-mini-project/blob/dc40f95aeda54ec94e1446b11fabbb3f182b2740/src/image/Endpoints.png)
 
 ## Dependencies
 - Spring Web
