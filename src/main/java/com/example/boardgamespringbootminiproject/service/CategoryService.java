@@ -227,9 +227,6 @@ public class CategoryService {
     public Optional<Category> deleteCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         if (categoryOptional.isPresent()){
-            //TODO fix deleteCategory bug
-            //DELETE ALL BOARDGAMES ASSOC WITH THE ID FIRST
-            //THEN DELETE THE CATEGORY
             categoryRepository.deleteById(categoryId);
             return categoryOptional;
         }else {

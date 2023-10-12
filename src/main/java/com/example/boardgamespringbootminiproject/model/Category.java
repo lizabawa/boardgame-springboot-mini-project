@@ -31,7 +31,7 @@ public class Category {
     /**
      * A list of board games associated with this category.
      */
-    @OneToMany
+    @OneToMany(mappedBy = "category", orphanRemoval = true) //if a category is deleted, then all boardgames associated with it are deleted as well
     @LazyCollection(LazyCollectionOption.FALSE) //when category instance is searched, fetch all assoc boardgames
     private List<Boardgame> boardgameList;
 
