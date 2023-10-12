@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class InformationNotFoundException extends RuntimeException {
+
+    /**
+     * Constructs a new InformationNotFoundException with the specified error message.
+     *
+     * @param message The error message that describes why the exception was thrown.
+     */
     public InformationNotFoundException(String message){
         super(message);
     }
