@@ -50,38 +50,84 @@ public class Boardgame {
         this.category = category;
     }
 
+    /**
+     * Get the name of the board game.
+     *
+     * @return The name of the board game.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set the name of the board game.
+     *
+     * @param name The name of the board game to set.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Get the maximum number of players for the board game.
+     *
+     * @return The maximum number of players.
+     */
     public Integer getMaxPlayers() {
         return maxPlayers;
     }
 
+    /**
+     * Set the maximum number of players for the board game.
+     *
+     * @param players The maximum number of players to set.
+     */
     public void setMaxPlayers(Integer players) {
         this.maxPlayers = players;
     }
 
+    /**
+     * Get the playing time of the board game.
+     *
+     * @return The playing time of the board game.
+     */
     public Integer getTime() {
         return time;
     }
 
-    public void setTime(Integer ageRange) {
-        this.time = ageRange;
+    /**
+     * Set the playing time of the board game.
+     *
+     * @param time The playing time to set.
+     */
+    public void setTime(Integer time) {
+        this.time = time;
     }
 
+    /**
+     * Get the user associated with the board game.
+     *
+     * @return The user associated with the board game.
+     */
     public User getUser() {
         return user;
     }
 
+
+    /**
+     * Set the user associated with the board game.
+     *
+     * @param user The user to associate with the board game.
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Set the category to which the board game belongs.
+     *
+     * @param category The category to associate with the board game.
+     */
     public void setCategory(Category category) {
         this.category = category;
     }
