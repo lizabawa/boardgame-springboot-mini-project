@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service class containing business logic for user registration and login.
+ */
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -39,7 +42,12 @@ public class UserService {
         this.authenticationManager = authenticationManager;
     }
 
-    //REGISTER USER
+    /**
+     * Registers a new user.
+     *
+     * @param userObject The user object to be registered.
+     * @return The registered user.
+     */
     public User createUser(User userObject){
         if(!userRepository.existsByEmailAddress(userObject.getEmailAddress())){
             userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
@@ -49,7 +57,12 @@ public class UserService {
         }
     }
 
-    //LOGIN USER
+    /**
+     * Logs in a user and returns a JWT token upon successful authentication.
+     *
+     * @param loginRequest The login request containing email address and password.
+     * @return An optional JWT token if authentication is successful, empty otherwise.
+     */
     public Optional<String> loginUser(LoginRequest loginRequest){
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getEmailAddress(), loginRequest.getPassword()); //grab user login details (email and password)
 
@@ -64,6 +77,12 @@ public class UserService {
         }
     }
 
+    /**
+     * Finds a user by their email address.
+     *
+     * @param emailAddress The email address of the user to find.
+     * @return The user with the specified email address.
+     */
     public User findUserByEmailAddress(String emailAddress){
         return userRepository.findUserByEmailAddress(emailAddress);
     }
