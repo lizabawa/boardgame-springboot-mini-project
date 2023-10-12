@@ -23,14 +23,14 @@ public class Boardgame {
     private Integer time;
 
     @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Boardgame() {
     }

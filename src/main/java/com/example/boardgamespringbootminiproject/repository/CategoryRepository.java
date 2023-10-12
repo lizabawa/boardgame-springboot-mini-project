@@ -3,6 +3,7 @@ package com.example.boardgamespringbootminiproject.repository;
 import com.example.boardgamespringbootminiproject.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,5 +17,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     Category findByNameAndUserId(String categoryName, Long userId);
 
-    void deleteCategoryById(Long categoryId);
+    @Transactional
+    void deleteById(Long categoryId);
 }

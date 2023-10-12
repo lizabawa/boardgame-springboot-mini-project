@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /**
@@ -42,13 +41,23 @@ public class CategoryService {
         this.boardgameRepository = boardgameRepository;
     }
 
-    //GET CURRENT LOGGED IN USER
+    /**
+     * Gets the currently logged in user.
+     *
+     * @return The currently logged in user.
+     */
     public User getCurrentlyLoggedInUser(){
         MyUserDetails userDetails = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); //once user is authorized via JWT, grabs the users login details
         return userDetails.getUser();
     }
 
-    //CREATE A NEW CATEGORY
+    /**
+     * Creates a new category.
+     *
+     * @param categoryObject The category object to create.
+     * @return The created category.
+     * @throws InformationAlreadyExistsException If a category with the same name already exists.
+     */
     public Category createCategory(Category categoryObject){
         Category category = categoryRepository.findByNameAndUserId(categoryObject.getName(), getCurrentlyLoggedInUser().getId());
         if (category == null){
@@ -59,7 +68,15 @@ public class CategoryService {
         }
     }
 
-    //CREATE A CATEGORY BOARDGAME ITEM
+    /**
+     * Creates a category board game item.
+     *
+     * @param categoryId The ID of the category to associate the board game with.
+     * @param boardgameObject The board game object to create.
+     * @return The created board game.
+     * @throws InformationAlreadyExistsException If a board game with the same name already exists.
+     * @throws InformationNotFoundException If the category with the given ID is not found.
+     */
     public Boardgame createCategoryBoardgame(Long categoryId, Boardgame boardgameObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         Optional<Boardgame> boardgameOptional = Optional.ofNullable(boardgameRepository.findByNameAndUserId(boardgameObject.getName(), getCurrentlyLoggedInUser().getId()));
@@ -77,7 +94,12 @@ public class CategoryService {
         }
     }
 
-    //GET ALL CATEGORIES
+    /**
+     * Gets all categories associated with the currently logged in user.
+     *
+     * @return A list of categories.
+     * @throws InformationNotFoundException If no categories are found for the user.
+     */
     public List<Category> getCategories(){
         List<Category> categoryList = categoryRepository.findByUserId(getCurrentlyLoggedInUser().getId());
         if (categoryList.isEmpty()){
@@ -87,7 +109,13 @@ public class CategoryService {
         }
     }
 
-    //GET ALL BOARDGAMES WITHIN A CATEGORY
+    /**
+     * Gets all board games within a category.
+     *
+     * @param categoryId The ID of the category to retrieve board games from.
+     * @return A list of board games in the category.
+     * @throws InformationNotFoundException If no board games are found for the category.
+     */
     public List<Boardgame> getCategoryBoardgames(Long categoryId){
         List<Category> categoryOptional = categoryRepository.findByUserId(getCurrentlyLoggedInUser().getId());
         if (categoryOptional != null){
@@ -97,7 +125,13 @@ public class CategoryService {
         }
     }
 
-    //GET A CATEGORY
+    /**
+     * Gets a category by its ID.
+     *
+     * @param categoryId The ID of the category to retrieve.
+     * @return An optional containing the category, or empty if not found.
+     * @throws InformationNotFoundException If the category with the given ID is not found.
+     */
     public Optional<Category> getCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         if (categoryOptional.isEmpty()){
@@ -107,7 +141,14 @@ public class CategoryService {
         }
     }
 
-    //GET A BOARDGAME FROM A CATEGORY
+    /**
+     * Gets a board game from a category by its IDs.
+     *
+     * @param categoryId The ID of the category.
+     * @param boardgameId The ID of the board game.
+     * @return An optional containing the board game, or empty if not found.
+     * @throws InformationNotFoundException If the category or board game with the given IDs is not found.
+     */
     public Optional<Boardgame> getCategoryBoardgame(Long categoryId, Long boardgameId){
         Optional<Boardgame> boardgameOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
@@ -122,7 +163,15 @@ public class CategoryService {
         }
     }
 
-    //UPDATE A CATEGORY
+    /**
+     * Updates a category.
+     *
+     * @param categoryId The ID of the category to update.
+     * @param categoryObject The updated category object.
+     * @return An optional containing the updated category, or empty if not found.
+     * @throws InformationNotFoundException If the category with the given ID is not found.
+     * @throws InformationAlreadyExistsException If the updated category is the same as the existing one.
+     */
     public Optional<Category> updateCategory(Long categoryId, Category categoryObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         if (categoryOptional.isEmpty()){
@@ -136,7 +185,16 @@ public class CategoryService {
         }
     }
 
-    //UPDATE CATEGORY BOARDGAME
+    /**
+     * Updates a category board game item.
+     *
+     * @param categoryId The ID of the category to which the board game belongs.
+     * @param boardgameId The ID of the board game to update.
+     * @param boardgameObject The updated board game object.
+     * @return An optional containing the updated board game, or empty if not found.
+     * @throws InformationNotFoundException If the category or board game with the given IDs is not found.
+     * @throws InformationAlreadyExistsException If the updated board game is the same as the existing one.
+     */
     public Optional<Boardgame> updateCategoryBoardgame(Long categoryId, Long boardgameId, Boardgame boardgameObject){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         Optional<Boardgame> itemOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
@@ -159,18 +217,34 @@ public class CategoryService {
         }
     }
 
-    //DELETE CATEGORY
+    /**
+     * Deletes a category by its ID.
+     *
+     * @param categoryId The ID of the category to delete.
+     * @return An optional containing the deleted category, or empty if not found.
+     * @throws InformationNotFoundException If the category with the given ID is not found.
+     */
     public Optional<Category> deleteCategory(Long categoryId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         if (categoryOptional.isPresent()){
-            categoryRepository.deleteCategoryById(categoryId);
+            //TODO fix deleteCategory bug
+            //DELETE ALL BOARDGAMES ASSOC WITH THE ID FIRST
+            //THEN DELETE THE CATEGORY
+            categoryRepository.deleteById(categoryId);
             return categoryOptional;
         }else {
             throw new InformationNotFoundException("Category with id " + categoryId + " not found.");
         }
     }
 
-    //DELETE CATEGORY BOARDGAME
+    /**
+     * Deletes a category board game item by their IDs.
+     *
+     * @param categoryId The ID of the category.
+     * @param boardgameId The ID of the board game to delete.
+     * @return An optional containing the deleted board game, or empty if not found.
+     * @throws InformationNotFoundException If the category or board game with the given IDs is not found.
+     */
     public Optional<Boardgame> deleteCategoryBoardgame(Long categoryId, Long boardgameId){
         Optional<Category> categoryOptional = Optional.ofNullable(categoryRepository.findByIdAndUserId(categoryId, getCurrentlyLoggedInUser().getId()));
         Optional<Boardgame> itemOptional = Optional.ofNullable(boardgameRepository.findByIdAndUserId(boardgameId, getCurrentlyLoggedInUser().getId()));
