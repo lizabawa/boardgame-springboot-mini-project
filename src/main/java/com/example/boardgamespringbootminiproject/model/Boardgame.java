@@ -4,29 +4,50 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
+/**
+ * An entity class representing a board game in the database.
+ */
 @Entity
 @Table(name = "boardgames")
 public class Boardgame {
 
+    /**
+     * The unique identifier for the board game.
+     */
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * The name of the board game.
+     */
     @Column
     private String name;
 
+    /**
+     * The maximum number of players the board game can accommodate.
+     */
     @Column
     private Integer maxPlayers;
 
+    /**
+     * The estimated playing time of the board game in minutes.
+     */
     @Column
     private Integer time;
 
+    /**
+     * The user who owns or created the board game item.
+     */
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 
+    /**
+     * The category to which the board game belongs.
+     */
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "category_id")
