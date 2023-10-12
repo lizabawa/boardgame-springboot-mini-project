@@ -18,16 +18,33 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true) //must be authorized to gain access to endpoints
 public class SecurityConfiguration {
 
+    /**
+     * Provides a BCrypt password encoder bean for password hashing.
+     *
+     * @return The BCryptPasswordEncoder bean.
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Creates a JwtRequestFilter bean for handling JWT authentication.
+     *
+     * @return The JwtRequestFilter bean.
+     */
     @Bean
     public JwtRequestFilter authJwtRequestFilter(){
         return new JwtRequestFilter();
     }
 
+    /**
+     * Configures security filters and permissions for HTTP requests.
+     *
+     * @param http The HttpSecurity object for configuring security.
+     * @return The configured SecurityFilterChain.
+     * @throws Exception if there is a security configuration exception.
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/auth/users/", "/auth/users/login/", "/auth/users/register/").permitAll()
@@ -41,6 +58,13 @@ public class SecurityConfiguration {
         return http.build(); //return the http
     }
 
+    /**
+     * Provides an AuthenticationManager bean.
+     *
+     * @param authConfig The AuthenticationConfiguration for getting the AuthenticationManager.
+     * @return The AuthenticationManager bean.
+     * @throws Exception if there is an exception while obtaining the AuthenticationManager.
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception{
         return authConfig.getAuthenticationManager();
