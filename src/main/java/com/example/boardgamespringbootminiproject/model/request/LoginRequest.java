@@ -7,10 +7,20 @@ public class LoginRequest {
     private String emailAddress;
     private String password;
 
+    /**
+     * Get the email address of the user.
+     *
+     * @return The user's email address.
+     */
     public String getEmailAddress() {
         return emailAddress;
     }
 
+    /**
+     * Get the password of the user.
+     *
+     * @return The user's password.
+     */
     public String getPassword() {
         return password;
     }
