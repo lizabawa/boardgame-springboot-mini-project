@@ -7,17 +7,28 @@ public class LoginResponse {
     private String jwt;
 
     /**
+     * Constructs a new LoginResponse with the specified JWT token.
      *
-     * @param jwt This is the JSON Web token.
+     * @param jwt The JWT token to be included in the response.
      */
     public LoginResponse(String jwt) {
         this.jwt = jwt;
     }
 
+    /**
+     * Get the JWT token included in the response.
+     *
+     * @return The JWT token.
+     */
     public String getJwt() {
         return jwt;
     }
 
+    /**
+     * Set the JWT token to be included in the response.
+     *
+     * @param jwt The JWT token to set in the response.
+     */
     public void setJwt(String jwt) {
         this.jwt = jwt;
     }
