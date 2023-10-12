@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
- * At every user request, this class finds information from the user and validates the information
+ * A filter that intercepts incoming HTTP requests to check for JWT tokens and authenticate users.
  */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -36,6 +36,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         this.jwtUtils = jwtUtils;
     }
 
+    /**
+     * Extracts and parses the JWT token from the request's "Authorization" header.
+     *
+     * @param request The HTTP request to parse the JWT token from.
+     * @return The extracted JWT token or `null` if not found or not starting with "Bearer".
+     */
     private String parseJwt(HttpServletRequest request){
         String headerAuth = request.getHeader("Authorization"); //when user sends a request, this checks for keycode header "authorization"
         if (StringUtils.hasLength(headerAuth) && headerAuth.startsWith("Bearer")) {
